@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +10,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FilterComponent } from './filter/filter.component';
 import { MyteamComponent } from './myteam/myteam.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+ 
+import { CommonModule } from '@angular/common';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -15,9 +24,20 @@ import { HomeComponent } from './home/home.component';
     FilterComponent,
     MyteamComponent,
     HomeComponent,
+    TestComponent
+
+
   ],
-  imports: [BrowserModule, FontAwesomeModule, AppRoutingModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    FontAwesomeModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    CommonModule
+  ],
+  providers: [provideClientHydration()],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}

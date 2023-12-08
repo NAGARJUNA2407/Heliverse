@@ -1,49 +1,54 @@
 <app-navbar></app-navbar>
 <app-filter></app-filter>
-<h1>home</h1>
-<!-- <app-test></app-test> -->
-<app-filter></app-filter>
-<a routerLink="/about">About Pe Jao</a> <br>
-
-
-<!-- user.component.html --> -->
+<app-test></app-test>
 <div>
-
-  <h2>User Information</h2>
-
-  <ul>
-
-    <li *ngFor="let user of users">
-
-
-      <p>ID:{{user.id}}</p>
-      <p>Name: {{ user.first_name }}</p>
-      <p>Last Name: {{ user.last_name }}</p>
-      <p>Email :{{user.email}}</p>
-      <p>Gender :{{user.gender}}</p>
-      <p>Domain :{{user.domain}}</p>
-      <p>Available :{{user.available}}</p>
-      <img src={{user.avatar}} alt="haifuisd">
-
-
-
-    </li>
-  </ul>
-
-  <div>
-
-
-    <button (click)="prevPage()" [hidden]="currentPage === 1">Previous Page</button>
-    <button (click)="nextPage()" [hidden]="isLastPage()">Next Page</button>
-
-    <div>
-      Page no. {{getCurrentPage()}}
-      <!-- <span>of</span> {{getTotalPages()}} -->
+  <h2 class="text-center mb-4 font-semibold text-2xl mt-3">User Information</h2>
+  <div
+    class="w-full border border-2 border-l-emerald-900 px-10 py-5 overflow-auto mb-10"
+  >
+    <div class="grid grid-cols-4 xl:grid-cols-4 gap-4">
+      <div *ngFor="let user of users">
+        <div class="border p-4 rounded-md bg-white shadow-md">
+          <img
+            src="{{ user.avatar }}"
+            alt="haifuisd"
+            class="mx-auto mb-3 border border-1 rounded-full border-red-500 bg-slate-500"
+          />
+          <p class="font-semibold text-[0.8rem] mb-2">
+            {{ user.first_name }} {{ user.last_name }}
+          </p>
+          <p class="text-sm text-gray-600 mb-2">{{ user.email }}</p>
+          <p class="text-sm text-gray-600 mb-2">{{ user.gender }}</p>
+          <p class="text-sm text-gray-600 mb-2">{{ user.domain }}</p>
+          <p class="text-sm text-gray-600 mb-2">{{ user.available }}</p>
+          <button
+            class="relative border border-2 border-black-600 bg-red-600 text-white p-2 text-sm b-[2px] rounded-md mt-2 hover:bg-white hover:text-black transition-all ease-in 200"
+          >
+            Add To Team
+          </button>
+        </div>
+      </div>
     </div>
-
   </div>
-
-
+  <div class="fixed bottom-0 w-full bg-gray-200 py-2">
+    <div class="flex justify-around items-center">
+      <button
+        (click)="prevPage()"
+        [disabled]="currentPage === 1"
+        class="border-2 border-slate-600 bg-orange-400 px-[5px] py-[1px] rounded-md font-semibold font-sans text-black text-xs"
+      >
+        Previous Page
+      </button>
+      <div class="text-center p-0 font-bold capitalize">
+        Page no. {{ getCurrentPage() }}
+      </div>
+      <button
+        (click)="nextPage()"
+        [hidden]="isLastPage()"
+        class="border-2 border-slate-600 bg-orange-400 px-[5px] py-[1px] rounded-md font-semibold font-sans text-black text-xs"
+      >
+        Next Page
+      </button>
+    </div>
+  </div>
 </div>
-
-

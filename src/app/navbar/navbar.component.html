@@ -1,43 +1,60 @@
-<body class="font-sans bg-gray-100">
-
+<main class="font-sans bg-gray-100">
   <!-- Navigation Bar -->
-  <nav class="bg-blue-500 p-4">
-    <div class="container mx-auto flex items-center justify-between">
-
+  <nav class="bg-blue-500 p-2 sticky top-0">
+    <div class="mx-auto flex items-center justify-between">
       <!-- Logo -->
-      <div class="text-white">
-        <a href="#" class="text-lg font-semibold">Your Logo</a>
+      <div>
+        <a routerLink="/">
+          <img
+            src="https://cdn.vectorstock.com/i/1000x1000/47/51/letter-h-logo-design-initials-vector-29014751.webp"
+            class="h-8 rounded-md"
+            alt="logo"
+          />
+        </a>
       </div>
 
       <!-- Navigation Links -->
-      <div class="space-x-4">
+      <div
+        class="relative space-x-4 right-[13px] left-[300px] font-bold hover:underline transition-all ease-in 200"
+      >
         <a class="text-white" routerLink="/">Home</a>
         <a class="text-white" routerLink="/team">Teams</a>
-
       </div>
 
       <!-- Search Bar -->
-      <div class="flex items-center">
+      <div class="flex items-center h-[10px]">
+        <form (submit)="search()">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="border border-gray-300 bg-white px-2 py-[3px]text-sm rounded-md focus:outline-none focus:border-blue-500"
+            [(ngModel)]="searchTerm"
+            name="searchTerm"
+          />
 
-        <input type="text" placeholder="Search..."
-          class="border border-gray-300 bg-white px-3 py-1 rounded-md focus:outline-none focus:border-blue-500">
+          <button type="submit">Search</button>
+        </form>
 
-        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"
-          class="ml-3 cursor-pointer">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="16"
+          width="16"
+          viewBox="0 0 512 512"
+          class="ml-3 cursor-pointer"
+          (click)="getName()"
+        >
           <path
-            d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+            d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+          />
         </svg>
-
-        <!-- Search Icon -->
-
-
-
-
-
       </div>
-
     </div>
   </nav>
 
-
-</body>
+  <ul *ngIf="searchResults.length > 0">
+    <li *ngFor="let result of searchResults">
+      {{ result.first_name }} {{ result.last_name }}
+    </li>
+    <!-- Display other relevant information -->
+  </ul>
+</main>

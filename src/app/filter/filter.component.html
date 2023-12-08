@@ -1,38 +1,74 @@
-<main class="">
-  <div class="  flex items-center justify-end border border-1 border-red-500 top-[3px] w-[1/2] pt-2 pr-3">
+<main class="main bg-slate-300">
+  <div
+    class="flex items-center justify-end border-1 border-red-500 top-[3px] w-[1/2] pt-2 pr-3"
+  >
     <!-- Domain Filter -->
-    <div class="mb-4 mx-3">
-      <label for="domain" class="block text-xs font-medium text-gray-600">Domain:</label>
-      <select id="domain" name="domain" class="mt-1 p-1 border  w-full text-xs">
-        <option value="web">Web</option>
-        <option value="mobile">Mobile</option>
-        <option value="data">Data Science</option>
+    <div class="mb-4 mx-3 domain-filter">
+      <label for="domain" class="block text-xs font-medium text-gray-600"
+        >Domain:</label
+      >
+      <select
+        id="domain"
+        name="domain"
+        class="mt-1 p-1 border w-full text-xs"
+        [(ngModel)]="selectedDomain"
+      >
+        <option value="None">None</option>
+        <option value="Management">Management</option>
+        <option value="It">IT</option>
+        <option value="Finance">Finance</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Sales">Sales</option>
+        <option value="UI Designing">UI Designing</option>
+        <option value="Business Development">Business Development</option>
       </select>
     </div>
 
     <!-- Gender Filter -->
-    <div class="mb-4 mx-3 ">
-      <label for="gender" class="block text-xs font-medium text-gray-600">Gender:</label>
-      <select id="gender" name="gender" class="mt-1 p-1 border  w-full text-xs">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
+    <div class="mb-4 mx-3 gender-filter">
+      <label for="gender" class="block text-xs font-medium text-gray-600"
+        >Gender:</label
+      >
+      <select
+        id="gender"
+        name="gender"
+        class="mt-1 p-1 border w-full text-xs"
+        [(ngModel)]="selectedGender"
+      >
+        <option value="None">None</option>
+        <option value="Genderqueer">Genderqueer</option>
+        <option value="Bigender">Bigender</option>
+        <option value="Polygender">Polygender</option>
+        <option value="Female">Female</option>
+        <option value="Non-binary">Non-binary</option>
+        <option value="Genderfluid">Genderfluid</option>
+        <option value="Agender">Agender</option>
+        <option value="Male">Male</option>
       </select>
     </div>
 
     <!-- Availability Filter -->
-    <div class="mb-4 mx-3">
-      <label for="availability" class="block text-xs font-medium text-gray-600">Availability:</label>
-      <select id="availability" name="availability" class="mt-1 p-1 border  w-full text-xs">
-        <option value="full-time">Full-time</option>
-        <option value="part-time">Part-time</option>
-        <option value="freelance">Freelance</option>
+    <div class="mb-4 mx-3 availability-filter">
+      <label for="availability" class="block text-xs font-medium text-gray-600"
+        >Availability:</label
+      >
+      <select
+        id="availability"
+        name="availability"
+        class="mt-1 p-1 border w-full text-xs"
+        [(ngModel)]="selectedAvailability"
+      >
+        <option value="None">None</option>
+        <option value="true">True</option>
+        <option value="false">False</option>
       </select>
     </div>
 
     <!-- Apply Button -->
     <button
-      class="bg-blue-500 text-white   hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 h-fit px-2 rounded-sm py-0.5">
+      (click)="applyFilter()"
+      class="bg-blue-500 text-white hover:bg-blue-900  hover:text-black focus:outline-none focus:ring focus:border-blue-300 h-fit px-2 rounded-md py-0.5 "
+    >
       Apply
     </button>
   </div>
