@@ -17,4 +17,9 @@ export class NavbarComponent {
     this.first_name = this.searchTerm;
     console.log(this.first_name);
   }
+
+  search() {
+    this.dataService.searchByName(this.searchTerm);
+    this.dataService.notifyFilterApplied();
+  }
 }

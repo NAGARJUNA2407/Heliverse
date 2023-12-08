@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { faChessKing } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,6 @@ export class DataService {
     this.filterAppliedSubject.next(true);
   }
 
-
   applyFilters(filters: any): void {
     this.filteredData = this.originalData.filter((item) => {
       return (
@@ -45,6 +45,9 @@ export class DataService {
   hasSearchedData(): boolean {
     return this.searchData.length > 0;
   }
+  hasFilteredData(): boolean {
+    return this.filteredData.length > 0;
+  }
 
   getData(): Observable<any[]> {
     return this.http.get<any[]>(this.dataUrl);
@@ -55,7 +58,11 @@ export class DataService {
   }
 
   getDataArray(): any[] {
-    return this.hasFilteredData() ? this.filteredData : this.originalData;
+    return this.hasSearchedData()
+      ? this.searchData
+      : this.hasFilteredData()
+      ? this.filteredData
+      : this.originalData;
   }
 
   setData(data: any[]): void {
@@ -63,4 +70,46 @@ export class DataService {
     this.filteredDataSubject.next(data);
   }
 
+  searchByName(name: string): void {
+    this.http.get<any[]>(this.dataUrl).subscribe(
+      (data) => {
+        const searchTerm = name.toLowerCase();
+
+        // Search in the original data
+        const searchData = data.filter(
+          (item) =>
+            item.first_name.toLowerCase().includes(searchTerm) ||
+            item.last_name.toLowerCase().includes(searchTerm) ||
+            `${item.first_name} ${item.last_name}`
+              .toLowerCase()
+              .includes(searchTerm)
+        );
+
+        // Set main data as searchData if search results have length > 0
+        this.originalData = searchData.length > 0 ? searchData : data;
+
+        // Filter the filtered data based on the search term
+        const filteredSearchData = this.filteredData.filter(
+          (item) =>
+            item.first_name.toLowerCase().includes(searchTerm) ||
+            item.last_name.toLowerCase().includes(searchTerm) ||
+            `${item.first_name} ${item.last_name}`
+              .toLowerCase()
+              .includes(searchTerm)
+        );
+
+        // Set filtered data as filteredSearchData if search results have length > 0
+        this.filteredData =
+          filteredSearchData.length > 0
+            ? filteredSearchData
+            : this.filteredData;
+
+        // Notify subscribers with the new data
+        this.filteredDataSubject.next(this.filteredData);
+      },
+      (error) => {
+        console.error('Error during search:', error);
+      }
+    );
+  }
 }
