@@ -23,11 +23,6 @@ export class HomeComponent implements OnInit {
   loadData() {
     this.dataService.getData().subscribe((data) => {
       this.dataService.setData(data);
-      console.log('home kadata ', data);
-
-      // if (!this.dataService.hasFilteredData()) {
-      //   this.totalItems = this.dataService.getTotalItems();
-      // }
 
       this.updateDisplayedUsers();
     });
@@ -37,13 +32,12 @@ export class HomeComponent implements OnInit {
         this.totalItems = updatedTotalItems;
       }
       this.updateDisplayedUsers();
-      // Call
-      //  the new method to update total pages
+
     });
   }
 
   updateDisplayedUsers() {
-    console.log('calling this');
+    
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
 
     this.users = this.dataService
@@ -82,26 +76,20 @@ export class HomeComponent implements OnInit {
 
   @Output() teamMembersUpdated = new EventEmitter<any[]>();
 
-  // sendData(user: any) {
-  //   console.log('hi');
-  //   this.dataToSend.push(user);
-  //   console.log(user.domain);
-  // }
-  // }
   sendData(user: any) {
-    // Extract the domain value from the user
-    const userDomain = user['domain'] as string; // Use type assertion to specify the type
 
-    // Check if the user with the same domain already exists in dataToSend
+    const userDomain = user['domain'] as string;
+
+
     const isUserAlreadyAdded = this.dataToSend.some(
       (existingUser) => existingUser['domain'] === userDomain
     );
 
     if (!isUserAlreadyAdded) {
-      // User's domain doesn't exist in dataToSend, so push the user
+
       this.dataToSend.push(user);
 
-      // You can also emit the updated dataToSend array if needed
+
       this.teamMembersUpdated.emit(this.dataToSend);
     } else {
       console.log(

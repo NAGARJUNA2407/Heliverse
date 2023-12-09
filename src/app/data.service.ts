@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { faChessKing } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
   providedIn: 'root',
@@ -85,10 +84,10 @@ export class DataService {
               .includes(searchTerm)
         );
 
-        // Set main data as searchData if search results have length > 0
+
         this.originalData = searchData.length > 0 ? searchData : data;
 
-        // Filter the filtered data based on the search term
+
         const filteredSearchData = this.filteredData.filter(
           (item) =>
             item.first_name.toLowerCase().includes(searchTerm) ||
@@ -98,13 +97,13 @@ export class DataService {
               .includes(searchTerm)
         );
 
-        // Set filtered data as filteredSearchData if search results have length > 0
+
         this.filteredData =
           filteredSearchData.length > 0
             ? filteredSearchData
             : this.filteredData;
 
-        // Notify subscribers with the new data
+         
         this.filteredDataSubject.next(this.filteredData);
       },
       (error) => {

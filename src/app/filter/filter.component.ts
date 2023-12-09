@@ -20,21 +20,19 @@ export class FilterComponent {
   loadData() {
     this.dataService.getData().subscribe((data) => {
       this.dataService.setData(data);
-      // console.log('filter mein', this.dataService.getDataArray());
+
     });
   }
 
   applyFilter() {
-    console.log('in apply filter');
+    
     const filters = {
       domain: this.selectedDomain,
       gender: this.selectedGender,
       available: this.selectedAvailability,
     };
 
-    // console.log(filters);
-
-    this.dataService.applyFilters(filters); // Use the applyFilters method in DataService
+    this.dataService.applyFilters(filters);
 
     console.log(this.dataService.getDataArray());
     this.dataService.notifyFilterApplied();
