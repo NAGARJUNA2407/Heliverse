@@ -1,5 +1,6 @@
 # Heliverse
-#Hosted URL https://heliverse-first.vercel.app/
+#Hosted URL https://heliverse-sh61-fpq0l810k-nagarjuna-ballas-projects.vercel.app/
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
