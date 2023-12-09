@@ -1,16 +1,18 @@
-<main class="main bg-slate-300">
+<!-- //before -->
+<main class="main flex  justify-end bg-slate-300 mx-auto py-3 pr-6  ">
   <div
-    class="flex items-center justify-end border-1 border-red-500 top-[3px] w-[1/2] pt-2 pr-3"
+    class="flex items-center justify-end border-1 border-red-500  gap-2"
   >
     <!-- Domain Filter -->
-    <div class="mb-4 mx-3 domain-filter">
-      <label for="domain" class="block text-xs font-medium text-gray-600"
-        >Domain:</label
+    <p class="max-[715px]:hidden ">Domain:</p>
+    <div class=" domain-filter">
+      <label for="domain" class=" block min-[715px]:hidden text-xs font-medium text-gray-600"
+        >Domain: </label
       >
       <select
         id="domain"
         name="domain"
-        class="mt-1 p-1 border w-full text-xs"
+        class="  p-1 border w-full text-xs"
         [(ngModel)]="selectedDomain"
       >
         <option value="None">None</option>
@@ -25,14 +27,16 @@
     </div>
 
     <!-- Gender Filter -->
-    <div class="mb-4 mx-3 gender-filter">
-      <label for="gender" class="block text-xs font-medium text-gray-600"
-        >Gender:</label
+    <p class="ml-6 max-[715px]:hidden ">Gender:</p>
+    <div class="  gender-filter">
+
+      <label for="gender" class="block min-[715px]:hidden text-xs font-medium text-gray-600"
+        >Gender: </label
       >
       <select
         id="gender"
         name="gender"
-        class="mt-1 p-1 border w-full text-xs"
+        class="  p-1 border w-full text-xs"
         [(ngModel)]="selectedGender"
       >
         <option value="None">None</option>
@@ -48,14 +52,15 @@
     </div>
 
     <!-- Availability Filter -->
-    <div class="mb-4 mx-3 availability-filter">
-      <label for="availability" class="block text-xs font-medium text-gray-600"
-        >Availability:</label
+    <p class="ml-6  max-[715px]:hidden">Availability:</p>
+    <div class="  availability-filter">
+      <label for="availability" class="block min-[715px]:hidden text-xs font-medium text-gray-600"
+        > Availability:</label
       >
       <select
         id="availability"
         name="availability"
-        class="mt-1 p-1 border w-full text-xs"
+        class="  p-1 border w-full text-xs"
         [(ngModel)]="selectedAvailability"
       >
         <option value="None">None</option>
@@ -67,7 +72,7 @@
     <!-- Apply Button -->
     <button
       (click)="applyFilter()"
-      class="bg-blue-500 text-white hover:bg-blue-900  hover:text-black focus:outline-none focus:ring focus:border-blue-300 h-fit px-2 rounded-md py-0.5 "
+      class="bg-blue-500 text-white hover:bg-blue-900  hover:text-black focus:outline-none focus:ring focus:border-blue-300 h-fit px-2 rounded-md py-0.5 ml-3"
     >
       Apply
     </button>

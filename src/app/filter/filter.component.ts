@@ -20,7 +20,7 @@ export class FilterComponent {
   loadData() {
     this.dataService.getData().subscribe((data) => {
       this.dataService.setData(data);
-      console.log('filter mein', this.dataService.getDataArray());
+      // console.log('filter mein', this.dataService.getDataArray());
     });
   }
 
@@ -32,7 +32,7 @@ export class FilterComponent {
       available: this.selectedAvailability,
     };
 
-    console.log(filters);
+    // console.log(filters);
 
     this.dataService.applyFilters(filters); // Use the applyFilters method in DataService
 

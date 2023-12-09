@@ -1,3 +1,27 @@
-<app-navbar></app-navbar>
 
-<p>myteam works!</p>
+<main class="bg-slate-200">
+<button class="border-2 border-slate-600 ml-5 my-1 bg-red-200 p-1 rounded-md text-black" (click)="toggleVisibility()">
+  {{ isTeamsVisible ? 'Hide Teams' : 'Show Teams' }}
+</button>
+
+<div *ngIf="isTeamsVisible" class="w-full bg-slate-200  px-10 py-5 overflow-auto mb-10">
+  <div class="grid min-[570px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+    <div *ngFor="let user of dataArray">
+      <div class="border p-4 rounded-md shadow-md bg-lime-300">
+        <img
+          [src]="user.avatar"
+          alt="{{ user.first_name }} {{ user.last_name }}"
+          class="mx-auto mb-3 border border-1 rounded-full border-red-500 bg-slate-500"
+        />
+        <p class="font-semibold text-[0.8rem] mb-2">
+          {{ user.first_name }} {{ user.last_name }}
+        </p>
+        <p class="text-sm text-gray-600 mb-2">{{ user.email }}</p>
+        <p class="text-sm text-gray-600 mb-2">{{ user.gender }}</p>
+        <p class="text-sm text-gray-600 mb-2">{{ user.domain }}</p>
+        <p class="text-sm text-gray-600 mb-2">{{ user.available }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

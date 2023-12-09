@@ -1,28 +1,37 @@
 <app-navbar></app-navbar>
 <app-filter></app-filter>
 
+<app-myteam [dataArray]="dataToSend"></app-myteam>
+
 <div>
-  <h2 class="text-center mb-4 font-semibold text-2xl mt-3">User Information</h2>
+  <div class="bg-slate-300">
+    <h2 class="text-center   font-semibold text-2xl  mt-0.5 pt-3">User's Information</h2>
+
+    </div>
+
+
   <div
-    class="w-full border border-2 border-l-emerald-900 px-10 py-5 overflow-auto mb-10"
+    class="w-full bg-slate-300  px-10 py-5 overflow-auto mb-10"
   >
-    <div class="grid grid-cols-4 xl:grid-cols-4 gap-4">
+    <div class="grid min-[570px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
       <div *ngFor="let user of users">
-        <div class="border p-4 rounded-md bg-white shadow-md">
+        <div class="border p-4 rounded-md shadow-md bg-sky-300">
           <img
             src="{{ user.avatar }}"
             alt="haifuisd"
             class="mx-auto mb-3 border border-1 rounded-full border-red-500 bg-slate-500"
           />
-          <p class="font-semibold text-[0.8rem] mb-2">
+          <p class="font-bold text-[1rem] mb-2">
             {{ user.first_name }} {{ user.last_name }}
           </p>
           <p class="text-sm text-gray-600 mb-2">{{ user.email }}</p>
           <p class="text-sm text-gray-600 mb-2">{{ user.gender }}</p>
           <p class="text-sm text-gray-600 mb-2">{{ user.domain }}</p>
           <p class="text-sm text-gray-600 mb-2">{{ user.available }}</p>
+
           <button
-            class="relative border border-2 border-black-600 bg-red-600 text-white p-2 text-sm b-[2px] rounded-md mt-2 hover:bg-white hover:text-black transition-all ease-in 200"
+            class="relative border-2 border-black-600 bg-red-600 text-white p-2 text-sm b-[2px] rounded-md mt-2 hover:bg-white hover:text-black transition-all ease-in 200 "
+            (click)="sendData(user)"
           >
             Add To Team
           </button>
@@ -30,14 +39,14 @@
       </div>
     </div>
   </div>
-  <div class="fixed bottom-0 w-full bg-gray-200 py-2">
+  <div class=" w-full bg-gray-200 py-2">
     <div class="flex justify-around items-center">
       <button
         (click)="prevPage()"
         [disabled]="currentPage === 1"
         class="border-2 border-slate-600 bg-orange-400 px-[5px] py-[1px] rounded-md font-semibold font-sans text-black text-xs"
       >
-        Previous Page
+        <- Previous Page
       </button>
       <div class="text-center p-0 font-bold capitalize">
         Page no. {{ getCurrentPage() }}
@@ -47,7 +56,7 @@
         [hidden]="isLastPage()"
         class="border-2 border-slate-600 bg-orange-400 px-[5px] py-[1px] rounded-md font-semibold font-sans text-black text-xs"
       >
-        Next Page
+         Next Page->
       </button>
     </div>
   </div>

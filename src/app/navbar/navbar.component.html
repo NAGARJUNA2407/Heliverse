@@ -1,24 +1,25 @@
-<main class="font-sans bg-gray-100">
+
+<main class="font-sans bg-gray-100 sticky top-0 z-10">
   <!-- Navigation Bar -->
-  <nav class="bg-blue-500 p-2 sticky top-0">
+  <nav class="bg-gradient-to-r from-violet-500 to-fuchsia-500 p-3 sticky top-0">
     <div class="mx-auto flex items-center justify-between">
       <!-- Logo -->
       <div>
         <a routerLink="/">
           <img
             src="https://cdn.vectorstock.com/i/1000x1000/47/51/letter-h-logo-design-initials-vector-29014751.webp"
-            class="h-8 rounded-md"
+            class="h-8 rounded-md min-[430px]:ml-6 ml-1 "
             alt="logo"
           />
         </a>
       </div>
-
+      <div class="flex items-center gap-5 mr-6">
       <!-- Navigation Links -->
       <div
-        class="relative space-x-4 right-[13px] left-[300px] font-bold hover:underline transition-all ease-in 200"
+        class="relative space-x-4   font-bold hover:underline transition-all ease-in 200"
       >
-        <a class="text-white" routerLink="/">Home</a>
-        <a class="text-white" routerLink="/team">Teams</a>
+        <a class="text-white text-bold text-xl mr-4" routerLink="/">Home</a>
+
       </div>
 
       <!-- Search Bar -->
@@ -49,8 +50,11 @@
 
 
       </div>
+  </div>
     </div>
   </nav>
+
+
 
   <ul *ngIf="searchResults.length > 0">
     <li *ngFor="let result of searchResults">

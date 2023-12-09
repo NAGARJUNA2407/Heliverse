@@ -13,8 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-
 import { CommonModule } from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
@@ -22,9 +23,7 @@ import { CommonModule } from '@angular/common';
     NavbarComponent,
     FilterComponent,
     MyteamComponent,
-    HomeComponent
-
-
+    HomeComponent,
 
   ],
   imports: [
@@ -33,10 +32,12 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    
+
+
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
-
 })
 export class AppModule {}
